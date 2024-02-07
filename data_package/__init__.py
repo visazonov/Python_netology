@@ -1,1 +1,1 @@
-print('читаем __init__.py')
+print("читаем __init__.py")
