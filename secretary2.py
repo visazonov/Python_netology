@@ -1,6 +1,5 @@
 # from secretary import Secretary
 #
-#
 # sec = Secretary('Kolya', 'qwerty')
 #
 # if __name__ == '__main__':
