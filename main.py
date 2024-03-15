@@ -1,8 +1,6 @@
-# import os
-# from dotenv import load_dotenv
-# load_dotenv()
-#
-# Pass = os.getenv('PASS')
-# print(Pass)
+import os
+from dotenv import load_dotenv
+load_dotenv()
+token = os.getenv('TOKEN')
 
 
