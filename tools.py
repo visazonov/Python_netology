@@ -1,4 +1,3 @@
-
 # def cached(old_function):
 #     cache = {}
 #     number_off_calls = 0
@@ -19,6 +18,7 @@
 
 ##################################################
 
+
 def cached(max_size):
     def _cached(old_function):
         cache = {}
@@ -26,8 +26,8 @@ def cached(max_size):
 
         def new_function(*args, **kwargs):
             nonlocal number_off_calls
-            number_off_calls +=1
-            key = f'{args}_{kwargs}'
+            number_off_calls += 1
+            key = f"{args}_{kwargs}"
             if key in cache:
                 return cache[key]
 
@@ -39,7 +39,9 @@ def cached(max_size):
             return result
 
         return new_function
+
     return _cached
+
 
 cached_50 = cached(50)
 

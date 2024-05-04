@@ -1,29 +1,35 @@
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
-token = os.getenv('TOKEN')
+token = os.getenv("TOKEN")
 
 import requests
 from pprint import pprint
 import tests.configuration
 
-def summarise(x,y):
+
+def summarise(x, y):
     return x + y
 
-def myltiply(x,y):
+
+def myltiply(x, y):
     return x * y
 
+
 def get_dict():
-    return {'name': 'Ivan', 'age': 29, 'city': 'Moscow'}
+    return {"name": "Ivan", "age": 29, "city": "Moscow"}
+
 
 def geo_logs_russia(geo_logs):
     geo_logs_rus = []
 
     for logs in geo_logs:
         for key, value in logs.items():
-            if value[1] == 'Россия':
+            if value[1] == "Россия":
                 geo_logs_rus.append(logs)
     return geo_logs_rus
+
 
 def unique_geo_id(ids):
     ids_new = []
@@ -31,6 +37,7 @@ def unique_geo_id(ids):
         ids_new += ids2
     ids_new2 = set(ids_new)
     return list(ids_new2)
+
 
 def queries_percent(queries):
     total_request_quantity = len(queries)  # общее кол-во запросов
@@ -48,35 +55,36 @@ def queries_percent(queries):
         # print(f'Кол-во слов в запросе {key}  - {percent_of_queries}')
     return dct_percent
 
+
 def get_headers():
-    return {
-        'Content-Type': 'application/json',
-        'Authorization': f'OAuth {token}'
-    }
+    return {"Content-Type": "application/json", "Authorization": f"OAuth {token}"}
+
 
 def create_folder(path):
     create_url = tests.configuration.base_host + tests.configuration.create_folder_uri
-    params = {'path': path}
+    params = {"path": path}
     response = requests.put(create_url, headers=get_headers(), params=params)
     return response
 
-def get_files_list():    #  получить список файлов
+
+def get_files_list():  #  получить список файлов
     request_url = tests.configuration.base_host + tests.configuration.get_files_list_uri
-    params = {'limit': '30'}
+    params = {"limit": "30"}
     response = requests.get(request_url, headers=get_headers(), params=params)
     return response
 
-def get_folder_list(path):    # получить список папок
-    request_url = tests.configuration.base_host + tests.configuration.get_folder_list_uri
-    params = {'path': path}
+
+def get_folder_list(path):  # получить список папок
+    request_url = (
+        tests.configuration.base_host + tests.configuration.get_folder_list_uri
+    )
+    params = {"path": path}
     response = requests.get(request_url, headers=get_headers(), params=params)
     return response
+
 
 def del_folder(path):
     request_url = tests.configuration.base_host + tests.configuration.del_folder_uri
-    params = {'path': path}
+    params = {"path": path}
     response = requests.delete(request_url, headers=get_headers(), params=params)
     return response
-
-
-

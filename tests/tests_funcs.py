@@ -13,17 +13,17 @@ from tests.main_tests import myltiply
 from tests.main_tests import get_dict
 
 # class TestSummarise(TestCase):
-    # def test_with_positive_numbers(self):
-    #     x, y = 10, 20
-    #     res = summarise(x, y)
-    #
-    #     # assert res == 30
-    #     self.assertEquals(res, 30)
+# def test_with_positive_numbers(self):
+#     x, y = 10, 20
+#     res = summarise(x, y)
+#
+#     # assert res == 30
+#     self.assertEquals(res, 30)
 
-    # def test_with_str_and_num(self):
-    #     x, y = 20, '30'
-    #     res = summarise(x, y)
-    #     self.assertEquals(res, 50)
+# def test_with_str_and_num(self):
+#     x, y = 20, '30'
+#     res = summarise(x, y)
+#     self.assertEquals(res, 50)
 
 #     def test_with_negative_nums(self):
 #         x, y = -10, -20
@@ -102,13 +102,17 @@ from tests.main_tests import get_dict
 #     # assert res is not expected_res
 #     assert not isinstance(res, int)
 
-@pytest.mark.parametrize('x, y, expected', [
-    (10, 20, 200),
-    (39, 2, 78),
-    (-10, -20, 200),
-    (29, Decimal('0.4'), Decimal('11.6')),
-    (8, 3, 24)
-])
+
+@pytest.mark.parametrize(
+    "x, y, expected",
+    [
+        (10, 20, 200),
+        (39, 2, 78),
+        (-10, -20, 200),
+        (29, Decimal("0.4"), Decimal("11.6")),
+        (8, 3, 24),
+    ],
+)
 def test_myltiply_with_nums(x, y, expected):
     res = myltiply(x, y)
     assert res == expected
@@ -117,9 +121,7 @@ def test_myltiply_with_nums(x, y, expected):
 def test_get_dict():
     res = get_dict()
     assert isinstance(res, dict)
-    assert 'name' in res
-    assert 'date' not in res
-    assert ['name', 'age', 'city'] == list(res.keys())
-    assert res['name'] == 'Ivan'
-
-
+    assert "name" in res
+    assert "date" not in res
+    assert ["name", "age", "city"] == list(res.keys())
+    assert res["name"] == "Ivan"
